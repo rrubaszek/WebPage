@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Moje Projekty - Portfolio</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header>
+        <h1>Cześć. Oto moje portfolio!</h1>
+        <nav>
+            <ul>
+                <li><a href="website.html">Strona główna</a></li>
+                <li><a href="projects.html">Projekty</a></li>
+                <li><a href="detailedProjects.html" class="active">Szczegóły projektów</a></li>
+                <li><a href="intrests.html">Zainteresowania</a></li>
+                <li><a href="photos.html">Zdjęcia</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section class="projects">
+            <h2>Moje Projekty Programistyczne</h2>
+
+            <article class="project">
+                <div class="project-content">
+                    <h3>System Lublok</h3>
+                    <p>System do zarządzania i przechowywania rządowych dokumentów, napisany w C++, wykorzystuje technologie blockchainowe, systemy rozproszone i REST API. Poniżej przedstawiam fragment kodu z systemu rozproszonego, który służy do zapisywania aktualnego stanu systemu blockchainowego</p>
+                    <pre class="code-block">
+                        <code>
+                            void lublok_log_store::write_at(ulong index, ptr<log_entry>& entry) {
+                                ptr<log_entry> clone = make_clone(entry);
+                            
+                                std::lock_guard<std::mutex> l(logs_lock_);
+                                auto itr = logs_.lower_bound(index);
+                                while (itr != logs_.end()) {
+                                    itr = logs_.erase(itr);
+                                }
+                                logs_[index] = clone;
+                            
+                                if (disk_emul_delay) {
+                                    uint64_t cur_time = timer_helper::get_timeofday_us();
+                                    disk_emul_logs_being_written_[cur_time + disk_emul_delay * 1000] = index;
+                        
+                                    auto entry_ = disk_emul_logs_being_written_.begin();
+                                    while (entry_ != disk_emul_logs_being_written_.end()) {
+                                        if (entry_->second > index) {
+                                            entry_ = disk_emul_logs_being_written_.erase(entry_);
+                                        } else {
+                                            entry_++;
+                                        }
+                                    }
+                                    disk_emul_ea_.invoke();
+                                }
+                            }
+                        </code>
+                    </pre>
+                    <a href="#" class="btn">Zobacz projekt</a>
+                </div>
+            </article>
+
+            <article class="project">
+                <div class="project-content">
+                    <h3>Kompilator</h3>
+                    <p>Kompilator customowego języka imperatywnego na maszynę wirtualną, napisany w C++. Poniżej przedstawiam głowną część kodu, odpowiedzialną za usuwanie nieużywanych procedur</p>
+                    <pre class="code-block">
+                        <code>
+                            void mark_called_procs(const std::string& name) {
+                                auto curr_proc = find_procedure(name);
+                                if (curr_proc == nullptr) return;
+                            
+                                std::cout << "Marked as called: " << name << "\n";
+                            
+                                if (curr_proc->is_called) return;
+                                curr_proc->is_called = true;
+                                
+                                for (const auto& proc_child : curr_proc->procs_called_by) {
+                                    mark_called_procs(proc_child);
+                                }
+                            }
+                            
+                            void remove_unused_procs() {
+                                for (auto it = procedure_table.begin(); it != procedure_table.end();) {
+                                    auto& proc = it->second;
+                            
+                                    if (!proc.is_called) {
+                                        std::cout << "Removed procedure: " << proc.name << "\n";
+                                        it = procedure_table.erase(it); 
+                                    } 
+                                    else {
+                                        ++it; 
+                                    }
+                                }
+                            }
+                        </code>
+                    </pre>
+                    <a href="#" class="btn">Zobacz projekt</a>
+                </div>
+            </article>            
+    </main>
+
+    <footer>
+        <p>&copy; 2025 Moje Portfolio</p>
+    </footer>
+</body>
+</html>

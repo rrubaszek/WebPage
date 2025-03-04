@@ -1,0 +1,258 @@
+/* Resetowanie domyślnych stylów */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ====== GLOBALNE STYLE ====== */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+    padding: 10px;
+}
+
+/* ====== NAGŁÓWEK I MENU ====== */
+header {
+    background: #53283b;
+    color: white;
+    padding: 15px 0;
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header h2 {
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 10px 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+}
+
+.active {
+    text-decoration: underline;
+}
+
+/* ====== SEKCJE STRONY GŁÓWNEJ ====== */
+.hero {
+    padding: 50px;
+    background-color: #fff;
+}
+
+.hero img {
+    width: 306px;
+    height: 208px;
+    border-radius: 20%;
+    border: 3px solid #53283b;
+    margin-bottom: 20px;
+}
+
+.about, .interests, .contact {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+ul {
+    list-style: none;
+}
+
+ul li {
+    margin: 10px 0;
+}
+
+/* ====== SEKCJA PROJEKTÓW ====== */
+.projects {
+    padding: 20px;
+    max-width: 95%;
+    margin: auto;
+}
+
+.project {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.project-content {
+    padding: 10px;
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: #53283b;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background 0.3s;
+}
+
+.btn:hover {
+    background: #6d3c52;
+}
+
+.code-block {
+    background: #1e1e1e;
+    color: #ffffff;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    overflow-x: auto;
+}
+
+.code-block code {
+    display: block;
+    white-space: pre;
+}
+
+/* ====== SEKCJA ZAINTERESOWAŃ ====== */
+.myintrests {
+    padding: 20px;
+    max-width: 95%;
+    margin: auto;
+}
+
+.intrest {
+    background: white;
+    margin: 20px auto;
+    padding: 15px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: left;
+}
+
+.intrest-info {
+    padding: 10px;
+}
+
+/* ====== SEKCJA ZDJĘĆ ===== */
+.gallery {
+    text-align: center;
+    margin: 20px auto;
+}
+
+.gallery-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    max-width: 800px;
+    margin: auto;
+    padding: 10px;
+}
+
+.gallery-container img {
+    width: 100%;
+    height: auto;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    transition: transform 0.3s;
+}
+
+.gallery-container img:hover {
+    transform: scale(1.1);
+}
+
+/* ====== STOPKA ====== */
+footer {
+    background: #53283b;
+    color: white;
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+/* ====== EKRANY ŚREDNIE (tablety, szerokie telefony) ====== */
+@media (min-width: 600px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+
+    .projects {
+        max-width: 80%;
+    }
+
+    .project {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        padding: 20px;
+    }
+
+    .project-content {
+        padding: 10px;
+    }
+}
+
+/* ====== DUŻE EKRANY (laptopy, monitory) ====== */
+@media (min-width: 1024px) {
+    body {
+        padding: 20px;
+    }
+
+    header {
+        color: white;
+        padding: 20px 50px;
+    }
+
+    header h1 {
+        margin-bottom: 10px;
+    }
+
+    nav ul {
+        display: flex;
+        gap: 20px;
+    }
+
+    .projects {
+        max-width: 1000px;
+        margin: auto;
+    }
+
+    .project {
+        display: flex;
+        align-items: center;
+        text-align: left;
+        padding: 30px;
+        border-left: 5px solid #53283b;
+    }
+
+    .project-content {
+        padding: 10px;
+    }
+}
