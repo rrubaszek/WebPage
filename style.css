@@ -20,6 +20,7 @@ header {
     background: #53283b;
     color: white;
     padding: 15px 0;
+    display: block;    
     text-align: center;
 }
 
@@ -65,8 +66,8 @@ nav ul li a {
 .hero img {
     width: 306px;
     height: 208px;
-    border-radius: 20%;
-    border: 3px solid #53283b;
+    border-radius: 2%;
+    border: none;
     margin-bottom: 20px;
 }
 
@@ -202,21 +203,6 @@ footer {
     nav ul li {
         margin: 0 15px;
     }
-
-    .projects {
-        max-width: 80%;
-    }
-
-    .project {
-        display: flex;
-        align-items: center;
-        gap: 20px;
-        padding: 20px;
-    }
-
-    .project-content {
-        padding: 10px;
-    }
 }
 
 /* ====== DUŻE EKRANY (laptopy, monitory) ====== */
@@ -235,24 +221,8 @@ footer {
     }
 
     nav ul {
-        display: flex;
+        flex-direction: row;
+        justify-content: center;
         gap: 20px;
-    }
-
-    .projects {
-        max-width: 1000px;
-        margin: auto;
-    }
-
-    .project {
-        display: flex;
-        align-items: center;
-        text-align: left;
-        padding: 30px;
-        border-left: 5px solid #53283b;
-    }
-
-    .project-content {
-        padding: 10px;
     }
 }
