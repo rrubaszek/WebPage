@@ -22,12 +22,15 @@
 
     <main>
         <section class="projects">
-            <h2>Moje Projekty Programistyczne</h2>
+            <h2>Detailed fragments</h2>
 
             <article class="project">
                 <div class="project-content">
-                    <h3>System Lublok</h3>
-                    <p>System do zarządzania i przechowywania rządowych dokumentów, napisany w C++, wykorzystuje technologie blockchainowe, systemy rozproszone i REST API. Poniżej przedstawiam fragment kodu z systemu rozproszonego, który służy do zapisywania aktualnego stanu systemu blockchainowego</p>
+                    <h3>Lublok System</h3>
+                    <p>
+                        System for managing and storing government documents, written in C++ with blockchain technologies and distributed systems, using REST API, IPFS, STL and Boost libraries.
+                        Below is presented a piece of code from distributed system, which saves the actual state of Lublok system
+                    </p>
                     <pre class="code-block">
                         <code>
                             void lublok_log_store::write_at(ulong index, ptr<log_entry>& entry) {
@@ -57,14 +60,17 @@
                             }
                         </code>
                     </pre>
-                    <a href="#" class="btn">Zobacz projekt</a>
+                    <a href="#" class="btn">Check code</a>
                 </div>
             </article>
 
             <article class="project">
                 <div class="project-content">
-                    <h3>Kompilator</h3>
-                    <p>Kompilator customowego języka imperatywnego na maszynę wirtualną, napisany w C++. Poniżej przedstawiam głowną część kodu, odpowiedzialną za usuwanie nieużywanych procedur</p>
+                    <h3>Compiler</h3>
+                    <p>
+                        Compiler of a custom imperative language for virtual machine, written in C++.
+                        Below is presented a piece of code responsible for removing unused procedures
+                    </p>
                     <pre class="code-block">
                         <code>
                             void mark_called_procs(const std::string& name) {
@@ -96,7 +102,7 @@
                             }
                         </code>
                     </pre>
-                    <a href="#" class="btn">Zobacz projekt</a>
+                    <a href="#" class="btn">Check code</a>
                 </div>
             </article>            
     </main>

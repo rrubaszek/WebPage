@@ -138,10 +138,42 @@ ul li {
 }
 
 /* ====== SEKCJA ZAINTERESOWAŃ ====== */
+
+/* Main section styling */
 .myintrests {
-    padding: 20px;
-    max-width: 95%;
-    margin: auto;
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 40px;
+}
+
+/* Individual interest box styling */
+.intrest {
+    border: 1px solid #ccc;
+    flex: 1;
+    margin: 10px;
+    padding: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+    transition: transform 0.3s ease-in-out;
+}
+
+.intrest:hover {
+    transform: translateY(-10px);
+}
+
+.intrest-info h3 {
+    color: #333;
+    font-size: 1.5em;
+    margin-bottom: 10px;
+}
+
+.intrest-info p {
+    color: #555;
+    line-height: 1.6;
+    font-size: 1em;
+    margin: 0;
 }
 
 .intrest {
@@ -155,7 +187,7 @@ ul li {
 
 .intrest-info {
     padding: 10px;
-}
+} */
 
 /* ====== SEKCJA ZDJĘĆ ===== */
 .gallery {
