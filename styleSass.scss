@@ -1,0 +1,317 @@
+@use 'sass:math';
+
+$primary-color: #53283b;
+$secondary-color: #6d3c52;
+$background-color: #f4f4f4;
+$text-color: #333;
+$white: #ffffff;
+
+@function calculate-rem($target, $context: 16) {
+    @return ($target / $context) * 1rem;
+}
+
+@function color-contrast($base-color, $dark: #000, $light: #fff) {
+    $color-brightness: lightness($base-color);
+    $dark-text-brightness: lightness($dark);
+    $light-text-brightness: lightness($light);
+
+    @if (abs($color-brightness - $light-text-brightness) > abs($color-brightness - $dark-text-brightness)) {
+        @return $light;
+    } @else {
+        @return $dark;
+    }
+}
+
+@function shade($color, $percentage) {
+    @return mix(black, $color, $percentage);
+}
+
+@function tint($color, $percentage) {
+    @return mix(white, $color, $percentage);
+}
+
+@function color_gradient($color) {
+    @return linear-gradient(135deg, lighten($color, 20%), darken($color, 20%));
+}
+
+@mixin flex-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+@mixin box-shadow {
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+@mixin transition($property: all, $duration: 0.3s) {
+    transition: $property $duration ease-in-out;
+}
+
+@mixin responsive-font-size($min-size, $max-size, $min-width: 320px, $max-width: 1200px) {
+    $min-size-rem: calculate-rem($min-size);
+    $max-size-rem: calculate-rem($max-size);
+
+    font-size: $min-size-rem;
+
+    @media screen and (min-width: $min-width) and (max-width: $max-width) {
+        font-size: calc(#{$min-size-rem} + (#{$max-size-rem} - #{$min-size-rem}) * ((100vw - #{$min-width}) / (#{$max-width} - #{$min-width})));
+    }
+
+    @media screen and (min-width: $max-width) {
+        font-size: $max-size-rem;
+    }
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: tint($background-color, 10%);
+    color: $text-color;
+    line-height: 1.6;
+    text-align: center;
+    @include responsive-font-size(14, 16);
+    padding: 10px;
+
+    @media (min-width: 1024px) {
+        padding: 20px;
+    }
+}
+
+// shared
+%section-base {
+    background: $white;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    border-radius: 8px;
+    @include box-shadow;
+}
+
+header {
+    background: $primary-color;
+    color: color-contrast($primary-color);
+    padding: 15px 0;
+    text-align: center;
+
+    @media (min-width: 1024px) {
+        padding: 20px 50px;
+    }
+
+    h1, h2 {
+        @include responsive-font-size(20, 28);
+        margin-bottom: 10px;
+    }
+
+
+    nav {
+        ul {
+            list-style: none;
+            @include flex-center;
+            flex-direction: column;
+
+            @media (min-width: 600px) {
+                flex-direction: row;
+                justify-content: center;
+            }
+
+            li {
+                display: inline;
+                margin: 10px 0;
+
+                @media (min-width: 600px) {
+                    margin: 0 15px;
+                }
+
+                a {
+                    color: $white;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 10px;
+                    display: block;
+                    @include transition(background);
+
+                    &:hover {
+                        background: shade($primary-color, 10%);
+                    }
+                }
+            }
+        }
+    }
+}
+
+.active {
+    text-decoration: underline;
+}
+
+// main section
+.about, .interests, .contact {
+    @extend %section-base;
+}
+
+// hero section
+.hero {
+    padding: 50px;
+    background-color: $white;
+
+    img {
+        width: 306px;
+        height: 208px;
+        border-radius: 2%;
+        border: none;
+        margin-bottom: 20px;
+        @include transition(transform);
+
+        &:hover {
+            transform: scale(1.05);
+        }
+    }
+}
+
+.projects {
+    padding: 20px;
+    max-width: 95%;
+    margin: auto;
+
+    .project {
+        @extend %section-base;
+        text-align: left;
+
+        &-content {
+            padding: 10px;
+        }
+    }
+}
+
+.btn {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 10px 15px;
+    background: color_gradient(#3c24b4);
+    // background: shade($primary-color, 10%);
+    color: color-contrast($primary-color);
+    text-decoration: none;
+    border-radius: 5px;
+    @include transition(background);
+
+    &:hover {
+        background: shade($primary-color, 20%);
+    }
+}
+
+.code-block {
+    background: #1e1e1e;
+    color: $white;
+    padding: 15px;
+    border-radius: 8px;
+    font-family: monospace;
+    overflow-x: auto;
+
+    code {
+        display: block;
+        white-space: pre;
+        
+    }
+}
+
+.myintrests {
+    display: flex;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    padding: 40px;
+
+    .intrest {
+        @extend %section-base;
+        flex: 1;
+        margin: 10px;
+        @include transition(transform);
+
+        &:hover {
+            transform: translateY(-10px);
+        }
+
+        &-info {
+            padding: 10px;
+
+            h3 {
+                color: $text-color;
+                @include responsive-font-size(18, 22);
+                margin-bottom: 10px;
+            }
+
+            p {
+                color: lighten($text-color, 20%);
+                line-height: 1.6;
+                @include responsive-font-size(14, 16);
+                margin: 0;
+            }
+        }
+    }
+}
+
+.gallery {
+        text-align: center;
+        margin: 20px auto;
+    
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        gap: 15px;
+        max-width: 400px;
+        margin: 0 auto;
+        padding: 10px;
+
+        img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            @include transition(transform);
+
+            &:hover {
+                transform: scale(1.05);
+            }
+        }
+}
+
+footer {
+    background: $primary-color;
+    color: color-contrast($primary-color);
+    text-align: center;
+    padding: 10px 0;
+    margin-top: 20px;
+}
+
+// ====== RESPONSIVE DESIGN ======
+@media (min-width: 600px) {
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+    }
+
+    nav ul li {
+        margin: 0 15px;
+    }
+}
+
+@media (min-width: 1024px) {
+    body {
+        padding: 20px;
+    }
+
+    header {
+        padding: 20px 50px;
+    }
+
+    nav ul {
+        flex-direction: row;
+        justify-content: center;
+        gap: 20px;
+    }
+}

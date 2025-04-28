@@ -1,0 +1,156 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    color: #333;
+    line-height: 1.6;
+    text-align: center;
+    padding: 10px;
+}
+
+/* ====== NAGŁÓWEK I MENU ====== */
+header {
+    background: #53283b;
+    color: white;
+    padding: 15px 0;
+    display: block;    
+    text-align: center;
+}
+
+header h1 {
+    margin-bottom: 10px;
+}
+
+header h2 {
+    margin-bottom: 10px;
+}
+
+nav ul {
+    list-style: none;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline;
+    margin: 10px 0;
+}
+
+nav ul li a {
+    color: white;
+    text-decoration: none;
+    font-weight: bold;
+    padding: 10px;
+    display: block;
+}
+  
+  canvas {
+    border: 1px solid #ccc;
+    background-color: #f9f9f9;
+    margin-bottom: 20px;
+  }
+
+  .active {
+    text-decoration: underline;
+}
+
+  .description {
+    background: white;
+    margin: 20px auto;
+    padding: 20px;
+    max-width: 600px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+  
+  .word {
+    display: flex;
+    justify-content: center;
+    margin: 20px 0;
+    font-size: 2rem;
+    letter-spacing: 10px;
+  }
+  
+  .letters {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 10px;
+  }
+  
+  .letters button {
+    padding: 10px;
+    width: 40px;
+    font-size: 1rem;
+    cursor: pointer;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    background: #eee;
+    transition: background 0.3s;
+  }
+  
+  .letters button.correct {
+    background-color: #28a745;
+    color: white;
+  }
+  
+  .letters button.wrong {
+    background-color: #007bff;
+    color: white;
+    pointer-events: none;
+  }
+
+  .letters button:active {
+    transform: scale(0.95);
+    transition: transform 0.1s;
+  }
+
+  button:hover {
+    background: #6d3c52;
+  }
+  
+  .hangman-drawing {
+    height: 150px;
+    margin-bottom: 10px;
+  }
+  
+  .message {
+    font-size: 1.5rem;
+    margin: 15px 0;
+    color: #444;
+  }
+  
+  .controls {
+    margin-top: 10px;
+  }
+  
+  .controls button {
+    margin: 0 10px;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 1rem;
+  }
+
+  @media (max-width: 600px) {
+    .letters {
+      gap: 6px;
+    }
+  
+    .word {
+      font-size: 1.5rem;
+      letter-spacing: 6px;
+    }
+  
+    .letters button {
+      font-size: 1rem;
+      padding: 8px;
+      height: 38px;
+    }
+  
+    .controls button {
+      font-size: 0.95rem;
+    }
+  }
+  
+  

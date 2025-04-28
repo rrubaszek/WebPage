@@ -4,14 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Moje Projekty - Portfolio</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="styleSass.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/default.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/languages/cpp.min.js"></script>
 </head>
 <body>
     <header>
         <h1>Portfolio</h1>
         <nav>
             <ul>
-                <li><a href="website.html">Main page</a></li>
+                <li><a href="index.html">Main page</a></li>
                 <li><a href="projects.html">Projects</a></li>
                 <li><a href="detailedProjects.html" class="active">Project's Details</a></li>
                 <li><a href="intrests.html">Intrests</a></li>
@@ -23,7 +26,6 @@
     <main>
         <section class="projects">
             <h2>Detailed fragments</h2>
-
             <article class="project">
                 <div class="project-content">
                     <h3>Lublok System</h3>
@@ -31,8 +33,8 @@
                         System for managing and storing government documents, written in C++ with blockchain technologies and distributed systems, using REST API, IPFS, STL and Boost libraries.
                         Below is presented a piece of code from distributed system, which saves the actual state of Lublok system
                     </p>
-                    <pre class="code-block">
-                        <code>
+                    <pre>
+                        <code class="language-cpp">
                             void lublok_log_store::write_at(ulong index, ptr<log_entry>& entry) {
                                 ptr<log_entry> clone = make_clone(entry);
                             
@@ -71,8 +73,8 @@
                         Compiler of a custom imperative language for virtual machine, written in C++.
                         Below is presented a piece of code responsible for removing unused procedures
                     </p>
-                    <pre class="code-block">
-                        <code>
+                    <pre>
+                        <code class="language-cpp">
                             void mark_called_procs(const std::string& name) {
                                 auto curr_proc = find_procedure(name);
                                 if (curr_proc == nullptr) return;
@@ -110,5 +112,19 @@
     <footer>
         <p>&copy; 2025 my portfolio</p>
     </footer>
+
+    <script src="script.js"></script>
+
+    <noscript>
+        <style>
+          #menu-toggle {
+            display: none !important;
+          }
+      
+          nav ul {
+            display: block !important;
+          }
+        </style>
+      </noscript>
 </body>
 </html>
